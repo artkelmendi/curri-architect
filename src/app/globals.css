@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@theme {
+  --color-base: #0a0a0a;
+  --color-raised: #131312;
+  --color-accent: #ff6600;
+  --color-bone: #f2efe9;
+  --color-line: #232321;
+}
+
+@theme inline {
+  --font-display: var(--font-archivo), system-ui, sans-serif;
+  --font-body: var(--font-grotesk), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-base);
+}
+
+html {
+  background: var(--color-base);
+}
+
+body {
+  background: var(--color-base);
+  color: var(--color-bone);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Thin dark scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-base);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a28;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Outlined display type */
+.text-outline {
+  -webkit-text-stroke: 1.5px var(--color-bone);
+  color: transparent;
+}
+.text-outline-accent {
+  -webkit-text-stroke: 1.5px var(--color-accent);
+  color: transparent;
+}
+@media (min-width: 768px) {
+  .text-outline {
+    -webkit-text-stroke-width: 2px;
+  }
+  .text-outline-accent {
+    -webkit-text-stroke-width: 2px;
+  }
+}
+.no-stroke {
+  -webkit-text-stroke: 0;
+  color: var(--color-accent);
+}
+
+/* Marquee band */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 36s linear infinite;
+}
+
+/* Slow ping for availability dot */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+/* Interactive logo-C grid background */
+.logo-grid {
+  --mx: 50vw;
+  --my: 50vh;
+}
+.logo-grid__layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.logo-grid__layer--base {
+  opacity: 0.05;
+}
+.logo-grid__layer--glow {
+  opacity: 0.34;
+  -webkit-mask-image: radial-gradient(
+    circle 240px at var(--mx) var(--my),
+    #000 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    transparent 72%
+  );
+  mask-image: radial-gradient(
+    circle 240px at var(--mx) var(--my),
+    #000 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    transparent 72%
+  );
+}
+.logo-grid__tiles {
+  position: absolute;
+  inset: -180px;
+  background-image: var(--logo-tile);
+  background-repeat: repeat;
+  background-size: 116px 130px;
+  will-change: transform;
+  animation: grid-drift 48s linear infinite;
+}
+@keyframes grid-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(116px, 130px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-pulse-dot,
+  .logo-grid__tiles {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
