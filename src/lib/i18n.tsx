@@ -29,7 +29,7 @@ const en = {
     l2: "Light",
     l3: "Form.",
     intro:
-      "Curri is the studio of one architect — designing residential, commercial and cultural spaces with honesty, proportion and light. Based in Prishtina, building anywhere.",
+      "Curri is the fresh new studio of one architect — designing residential, commercial and cultural spaces with honesty, proportion and light. Based in Prishtina, building anywhere.",
     viewWork: "View the work",
     scroll: "Scroll ↓",
   },
@@ -48,7 +48,7 @@ const en = {
   },
   about: {
     headingLines: ["The", "Architect"],
-    p1: "I’m Curri — and this practice is deliberately small. One architect, a handful of projects a year, and full attention on each of them, from the first sketch to the last site visit.",
+    p1: "I’m Curri — a fresh new architect with a deliberately small studio. One architect, a handful of projects a year, and full attention on each of them, from the first sketch to the last site visit.",
     p2: "I believe every site has one honest answer. My work is the process of finding it: stripping away what isn’t needed until space, light and structure say everything on their own.",
     stats: [
       { value: "12+", label: "Years of practice" },

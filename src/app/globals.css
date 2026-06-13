@@ -117,11 +117,18 @@ html.lenis body {
   inset: 0;
   overflow: hidden;
 }
+.logo-grid__layer--base,
+.logo-grid__layer--glow {
+  background-image: url('/images/curr-background.svg');
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-size: 660px 660px;
+}
 .logo-grid__layer--base {
-  opacity: 0.05;
+  opacity: 0.02;
 }
 .logo-grid__layer--glow {
-  opacity: 0.34;
+  opacity: 0.16;
   -webkit-mask-image: radial-gradient(
     circle 240px at var(--mx) var(--my),
     #000 0%,
@@ -136,21 +143,7 @@ html.lenis body {
   );
 }
 .logo-grid__tiles {
-  position: absolute;
-  inset: -180px;
-  background-image: var(--logo-tile);
-  background-repeat: repeat;
-  background-size: 116px 130px;
-  will-change: transform;
-  animation: grid-drift 48s linear infinite;
-}
-@keyframes grid-drift {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(116px, 130px, 0);
-  }
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

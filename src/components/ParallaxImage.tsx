@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { useRef } from "react";
 import {
   motion,
@@ -16,7 +16,7 @@ export default function ParallaxImage({
   sizes = "100vw",
   priority = false,
 }: {
-  src: string;
+  src: string | StaticImageData;
   alt: string;
   className?: string;
   sizes?: string;

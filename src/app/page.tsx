@@ -155,7 +155,7 @@ export default function Home() {
           </div>
           <Reveal delay={0.15} className="relative">
             <ParallaxImage
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1400&auto=format&fit=crop"
+              src="/images/curri-pic.png"
               alt={t.about.portraitAlt}
               className="h-[60vh] w-full lg:h-full lg:min-h-[640px]"
               sizes="(min-width: 1024px) 50vw, 100vw"
