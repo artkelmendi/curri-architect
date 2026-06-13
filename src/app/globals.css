@@ -119,7 +119,7 @@ html.lenis body {
 }
 .logo-grid__layer--base,
 .logo-grid__layer--glow {
-  background-image: url('/images/curr-background.svg');
+  background-image: var(--logo-grid-bg, url('/images/curr-background.svg'));
   background-repeat: repeat;
   background-position: 0 0;
   background-size: 660px 660px;

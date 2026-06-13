@@ -13,6 +13,7 @@ import AnimatedLogoMark from "@/components/AnimatedLogoMark";
 export default function Home() {
   const { t } = useLang();
   const featured = projects.slice(0, 4);
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   return (
     <>
@@ -155,7 +156,7 @@ export default function Home() {
           </div>
           <Reveal delay={0.15} className="relative">
             <ParallaxImage
-              src="/images/curri-pic.png"
+              src={`${basePath}/images/curri-pic.png`}
               alt={t.about.portraitAlt}
               className="h-[60vh] w-full lg:h-full lg:min-h-[640px]"
               sizes="(min-width: 1024px) 50vw, 100vw"

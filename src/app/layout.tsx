@@ -22,6 +22,8 @@ const grotesk = Space_Grotesk({
   display: "swap",
 });
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export const metadata: Metadata = {
   title: {
     default: "Curri Architect — Independent Architecture Practice",
@@ -38,7 +40,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${archivo.variable} ${grotesk.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col">
+      <body
+        className="flex min-h-full flex-col"
+        style={{ ["--logo-grid-bg" as string]: `url("${basePath}/images/curr-background.svg")` }}
+      >
         <LanguageProvider>
           <LogoGrid />
           <ScrollFrame />
