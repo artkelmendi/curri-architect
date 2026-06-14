@@ -105,7 +105,7 @@ export default function Preloader() {
               <motion.path
                 key={i}
                 d={d}
-                fill="#f2efe9"
+                fill="var(--color-bone)"
                 initial={reduced ? { opacity: 1 } : { opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -119,7 +119,7 @@ export default function Preloader() {
               <motion.path
                 key={`a${i}`}
                 d={d}
-                fill="#f2efe9"
+                fill="var(--color-bone)"
                 fillOpacity={0.6}
                 initial={reduced ? { opacity: 1 } : { opacity: 0 }}
                 animate={{ opacity: 1 }}

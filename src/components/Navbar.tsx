@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import LogoMark, { LogoWordmark } from "./LogoMark";
 import LangSwitch from "./LangSwitch";
+import ThemeToggle from "./ThemeToggle";
 import { useLang } from "@/lib/i18n";
 
 const EASE = [0.76, 0, 0.24, 1] as const;
@@ -88,11 +89,13 @@ export default function Navbar() {
             </Link>
             <span className="h-4 w-px bg-bone/20" />
             <LangSwitch />
+            <ThemeToggle />
           </div>
 
           {/* Mobile right cluster */}
-          <div className="flex items-center gap-4 md:hidden">
+          <div className="flex items-center gap-3 md:hidden">
             <LangSwitch />
+            <ThemeToggle />
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}

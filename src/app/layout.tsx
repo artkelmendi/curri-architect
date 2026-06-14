@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import ScrollFrame from "@/components/ScrollFrame";
 import LogoGrid from "@/components/LogoGrid";
 import { LanguageProvider } from "@/lib/i18n";
+import { ThemeProvider, themeInitScript } from "@/lib/theme";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -39,11 +40,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${archivo.variable} ${grotesk.variable} h-full antialiased`}>
+    <html lang="en" className={`${archivo.variable} ${grotesk.variable} h-full antialiased`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
         className="flex min-h-full flex-col"
         style={{ ["--logo-grid-bg" as string]: `url("${basePath}/images/curr-background.svg")` }}
       >
+        <ThemeProvider>
         <LanguageProvider>
           <LogoGrid />
           <ScrollFrame />
@@ -54,6 +59,7 @@ export default function RootLayout({
           <main className="relative z-10 flex-1">{children}</main>
           <Footer />
         </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
