@@ -7,8 +7,8 @@ import { LineReveal, Reveal } from "@/components/Reveal";
 import ParallaxImage from "@/components/ParallaxImage";
 import MarqueeBand from "@/components/MarqueeBand";
 import ProjectCard from "@/components/ProjectCard";
-import Magnetic from "@/components/Magnetic";
-import AnimatedLogoMark from "@/components/AnimatedLogoMark";
+import Logo3D from "@/components/Logo3D";
+import ProcessSticky from "@/components/ProcessSticky";
 
 export default function Home() {
   const { t } = useLang();
@@ -169,7 +169,7 @@ export default function Home() {
       {/* ── Brand moment: the mark draws itself on scroll ── */}
       <section className="relative border-t border-line">
         <div className="relative mx-auto flex max-w-[1700px] flex-col items-center px-6 py-28 md:py-44">
-          <AnimatedLogoMark className="h-44 w-auto text-accent md:h-64" />
+          <Logo3D className="h-48 md:h-72" />
           <Reveal delay={0.4} className="mt-12 text-center">
             <p className="text-xs uppercase tracking-[0.45em] text-bone/45">
               {t.band.tagline}
@@ -178,66 +178,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Services ─────────────────────────────────── */}
-      <section className="border-t border-line">
-        <div className="mx-auto max-w-[1700px] px-6 py-28 md:px-12 md:py-40">
-          <div className="mb-16 flex flex-wrap items-end justify-between gap-6">
-            <LineReveal
-              as="h2"
-              className="font-display text-[clamp(2.6rem,6vw,6rem)] font-black uppercase leading-[0.92] tracking-[-0.02em]"
-              lines={[
-                <span key="0">
-                  {t.services.headingPre}
-                  <span className="text-accent">{t.services.headingAccent}</span>
-                </span>,
-              ]}
-            />
-            <Reveal delay={0.15}>
-              <p className="max-w-[36ch] text-sm leading-relaxed text-bone/50">
-                {t.services.intro}
-              </p>
-            </Reveal>
-          </div>
-
-          <div>
-            {t.services.items.map((s, i) => (
-              <Reveal key={s.n} delay={i * 0.05}>
-                <div className="group grid cursor-default gap-2 border-t border-line py-8 transition-colors duration-300 hover:bg-raised md:grid-cols-12 md:items-center md:gap-6 md:py-10">
-                  <span className="font-display text-sm font-bold text-accent md:col-span-1 md:pl-4">
-                    {s.n}
-                  </span>
-                  <h3 className="font-display text-3xl font-bold uppercase tracking-tight text-bone transition-transform duration-300 group-hover:translate-x-2 md:col-span-6 md:text-5xl">
-                    {s.name}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-bone/50 md:col-span-4">
-                    {s.desc}
-                  </p>
-                  <span className="hidden justify-end pr-4 md:col-span-1 md:flex">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6 text-accent opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" aria-hidden="true">
-                      <path d="M7 17L17 7M9 7h8v8" />
-                    </svg>
-                  </span>
-                </div>
-              </Reveal>
-            ))}
-            <div className="border-t border-line" />
-          </div>
-
-          <Reveal delay={0.2} className="mt-16">
-            <Magnetic>
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-4 rounded-full border border-bone/25 px-9 py-4 text-xs font-semibold uppercase tracking-[0.25em] text-bone transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-base"
-              >
-                {t.services.cta}
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </Link>
-            </Magnetic>
-          </Reveal>
-        </div>
-      </section>
+      {/* ── Process (sticky scroll) ──────────────────── */}
+      <ProcessSticky />
     </>
   );
 }

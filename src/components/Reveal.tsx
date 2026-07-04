@@ -21,7 +21,10 @@ export function Reveal({
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-12% 0px" }}
+      // `amount` instead of a negative margin: rootMargin-based triggers are
+      // unreliable on some mobile browsers / in-app webviews and can leave
+      // content permanently hidden.
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.9, delay, ease: EASE }}
     >
       {children}
@@ -65,7 +68,7 @@ export function LineReveal({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-10% 0px" }}
+      viewport={{ once: true, amount: 0.3 }}
       transition={{ staggerChildren: stagger, delayChildren: delay }}
     >
       {lines.map((line, i) => (

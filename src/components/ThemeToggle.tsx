@@ -12,12 +12,14 @@ export default function ThemeToggle({ className }: { className?: string }) {
   const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const next = isDark ? "light" : "dark";
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // The theme wipe is a deliberate, tap-triggered flourish, so we let it play
+    // even under reduced-motion (which iOS Low Power Mode forces on). We only
+    // fall back to an instant switch where the API genuinely isn't available.
     const supported =
       typeof document !== "undefined" &&
       "startViewTransition" in document;
 
-    if (!supported || reduced) {
+    if (!supported) {
       setTheme(next);
       return;
     }

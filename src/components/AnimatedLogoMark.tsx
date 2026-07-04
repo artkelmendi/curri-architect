@@ -43,7 +43,7 @@ export default function AnimatedLogoMark({ className }: { className?: string }) 
       aria-hidden="true"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-15% 0px" }}
+      viewport={{ once: true, amount: 0.35 }}
     >
       <motion.path
         d={LOGO_PIECE_TOP}

@@ -142,7 +142,9 @@ html.lenis body {
   animation: pulse-dot 2.4s ease-in-out infinite;
 }
 
-/* Interactive logo-C grid background */
+/* Interactive logo-C grid background — the tiles slowly flow diagonally.
+   The drift is a GPU-composited transform on an oversized inner div (cheap,
+   no per-frame repaint), so it stays smooth on phones. */
 .logo-grid {
   --mx: 50vw;
   --my: 50vh;
@@ -152,15 +154,29 @@ html.lenis body {
   inset: 0;
   overflow: hidden;
 }
-.logo-grid__layer--base,
-.logo-grid__layer--glow {
+.logo-grid__tiles {
+  position: absolute;
+  /* bleed past the viewport by more than one tile so the drift never
+     exposes an edge */
+  inset: -260px;
   background-image: var(--logo-grid-bg, url('/images/curr-background.svg'));
   background-repeat: repeat;
-  background-position: 0 0;
   background-size: 138px 239px;
+  will-change: transform;
+  transform: translateZ(0);
+  animation: grid-flow 55s linear infinite;
+}
+/* Shift by exactly one tile → the loop is seamless */
+@keyframes grid-flow {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-138px, -239px, 0);
+  }
 }
 .logo-grid__layer--base {
-  opacity: 0.02;
+  opacity: 0.04;
 }
 .logo-grid__layer--glow {
   opacity: 0.16;
@@ -177,13 +193,20 @@ html.lenis body {
     transparent 72%
   );
 }
-.logo-grid__tiles {
-  display: none;
+/* Touch devices have no cursor, so drop the spotlight layer entirely — keeps
+   the background to a single lightweight flowing layer on phones. */
+@media (hover: none) {
+  .logo-grid__layer--glow {
+    display: none;
+  }
+  .logo-grid__layer--base {
+    opacity: 0.05;
+  }
 }
 /* The pattern SVG is white-stroked; invert it to dark lines in light mode. */
 [data-theme="light"] .logo-grid__layer--base {
   filter: invert(1);
-  opacity: 0.045;
+  opacity: 0.055;
 }
 [data-theme="light"] .logo-grid__layer--glow {
   filter: invert(1);
@@ -191,9 +214,10 @@ html.lenis body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* The background flow (.logo-grid__tiles) is intentionally kept — it's a very
+     slow, subtle ambient drift the client wants visible on every device. */
   .animate-marquee,
-  .animate-pulse-dot,
-  .logo-grid__tiles {
+  .animate-pulse-dot {
     animation: none;
   }
   html {
