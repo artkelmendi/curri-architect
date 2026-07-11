@@ -9,6 +9,7 @@ import MarqueeBand from "@/components/MarqueeBand";
 import ProjectCard from "@/components/ProjectCard";
 import Logo3D from "@/components/Logo3D";
 import ProcessSticky from "@/components/ProcessSticky";
+import ScrollWorldJourney from "@/components/ScrollWorldJourney";
 
 export default function Home() {
   const { t } = useLang();
@@ -112,7 +113,11 @@ export default function Home() {
           </Reveal>
         </div>
 
-        <div className="grid gap-x-10 gap-y-20 md:grid-cols-2">
+        <div className="hidden lg:block">
+          <ScrollWorldJourney />
+        </div>
+
+        <div className="grid gap-x-10 gap-y-20 md:grid-cols-2 lg:hidden">
           <ProjectCard project={featured[0]} index={0} />
           <div className="md:mt-32">
             <ProjectCard project={featured[1]} index={1} delay={0.1} />

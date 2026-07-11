@@ -142,6 +142,19 @@ html.lenis body {
   animation: pulse-dot 2.4s ease-in-out infinite;
 }
 
+@keyframes scroll-world-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  55%,
+  100% {
+    transform: translateY(280%);
+  }
+}
+.animate-scroll-world-line {
+  animation: scroll-world-line 2.2s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
 /* Interactive logo-C grid background — the tiles slowly flow diagonally.
    The drift is a GPU-composited transform on an oversized inner div (cheap,
    no per-frame repaint), so it stays smooth on phones. */
@@ -217,7 +230,8 @@ html.lenis body {
   /* The background flow (.logo-grid__tiles) is intentionally kept — it's a very
      slow, subtle ambient drift the client wants visible on every device. */
   .animate-marquee,
-  .animate-pulse-dot {
+  .animate-pulse-dot,
+  .animate-scroll-world-line {
     animation: none;
   }
   html {
