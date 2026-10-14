@@ -24,7 +24,9 @@ const grotesk = Space_Grotesk({
 });
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const siteUrl = "https://artkelmendi.github.io/curri-architect/";
+const siteUrl = process.env.VERCEL
+  ? "https://curriarch.com/"
+  : "https://artkelmendi.github.io/curri-architect/";
 const shareImage = `${siteUrl}images/share-preview.jpg`;
 
 export const metadata: Metadata = {
