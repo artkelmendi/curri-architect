@@ -298,6 +298,9 @@ button:active { opacity: .8; }
 .architect-portrait__line--left { top: 12px; left: 12px; transform-origin: top; }
 .architect-portrait__line--right { bottom: 12px; right: 12px; transform-origin: bottom; }
 @media (min-width: 1024px) { .architect-portrait { min-height: 640px; } }
+@media (max-width: 767px) {
+  .architect-portrait { width: min(68vw, 240px); height: auto; margin-inline: auto; }
+}
 @media (hover: hover) and (pointer: fine) {
   .architect-portrait:hover .architect-portrait__image { transform: scale(1.025); }
   .architect-portrait:hover .architect-portrait__line { transform: scale(1); opacity: 1; }
