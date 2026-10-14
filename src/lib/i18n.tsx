@@ -109,14 +109,14 @@ const en = {
     contactTitle: "Contact",
     followTitle: "Follow",
     city: "Prishtina, Kosovo",
-    rights: "© 2026 Curri Architect",
+    rights: "© 2026 Curri Architects",
     tagline: "Prishtina — Worldwide",
   },
   projectsPage: {
     eyebrow: "AS · Residential interior studies",
     title: "Projects",
     blurb:
-      "Five related level studies from the AS residential scheme. Original architectural visualizations by Curri Architect, from shared living spaces to bedrooms, terraces and the utility level.",
+      "Five related level studies from the AS residential scheme. Original architectural visualizations by Curri Architects, from shared living spaces to bedrooms, terraces and the utility level.",
   },
   project: {
     back: "All projects",
@@ -255,14 +255,14 @@ const sq: typeof en = {
     contactTitle: "Kontakti",
     followTitle: "Na ndiqni",
     city: "Prishtinë, Kosovë",
-    rights: "© 2026 Curri Architect",
+    rights: "© 2026 Curri Architects",
     tagline: "Prishtinë — Kudo në botë",
   },
   projectsPage: {
     eyebrow: "AS · Studime të enterierit të banimit",
     title: "Projektet",
     blurb:
-      "Pesë studime të lidhura të niveleve të skemës së banimit AS. Vizualizime origjinale arkitektonike nga Curri Architect, nga hapësirat e përbashkëta te dhomat e gjumit, tarracat dhe niveli funksional.",
+      "Pesë studime të lidhura të niveleve të skemës së banimit AS. Vizualizime origjinale arkitektonike nga Curri Architects, nga hapësirat e përbashkëta te dhomat e gjumit, tarracat dhe niveli funksional.",
   },
   project: {
     back: "Të gjitha projektet",

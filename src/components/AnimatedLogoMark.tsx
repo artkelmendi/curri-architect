@@ -48,14 +48,14 @@ export default function AnimatedLogoMark({ className }: { className?: string }) 
       <motion.path
         d={LOGO_PIECE_TOP}
         stroke="currentColor"
-        strokeWidth={2.5}
+        strokeWidth={14}
         fill="currentColor"
         variants={piece(-28, -28, 0.1)}
       />
       <motion.path
         d={LOGO_PIECE_BOTTOM}
         stroke="currentColor"
-        strokeWidth={2.5}
+        strokeWidth={14}
         fill="currentColor"
         variants={piece(28, 28, 0.25)}
       />

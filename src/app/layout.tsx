@@ -27,26 +27,26 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const siteUrl = process.env.VERCEL
   ? "https://curriarch.com/"
   : "https://artkelmendi.github.io/curri-architect/";
-const shareImage = `${siteUrl}images/share-preview.jpg`;
+const shareImage = `${siteUrl}images/share-preview-architects.jpg`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Curri Architect — Independent Architecture Practice",
-    template: "%s — Curri Architect",
+    default: "Curri Architects — Independent Architecture Practice",
+    template: "%s — Curri Architects",
   },
   description:
-    "Curri Architect is an independent architecture practice in Prishtina designing residential, commercial and cultural spaces with honesty, proportion and light.",
+    "Curri Architects is an independent architecture practice in Prishtina designing residential, commercial and cultural spaces with honesty, proportion and light.",
   openGraph: {
     type: "website",
-    siteName: "Curri Architect",
-    title: "Curri Architect — Space, Light & Form",
+    siteName: "Curri Architects",
+    title: "Curri Architects — Space, Light & Form",
     description: "Independent architecture. Considered spaces, material and light.",
-    images: [{ url: shareImage, width: 1200, height: 630, alt: "Curri Architect — original studio logo and AS residential interior" }],
+    images: [{ url: shareImage, width: 1200, height: 630, alt: "Curri Architects — original studio logo and AS residential interior" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Curri Architect — Space, Light & Form",
+    title: "Curri Architects — Space, Light & Form",
     description: "Independent architecture. Considered spaces, material and light.",
     images: [shareImage],
   },

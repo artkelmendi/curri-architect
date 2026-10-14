@@ -81,7 +81,7 @@ export default function Footer() {
       <div className="border-t border-line">
         <div className="mx-auto grid max-w-[1700px] gap-12 px-6 py-16 md:grid-cols-4 md:px-12">
           <div>
-            <LogoFull className="h-28 w-auto text-bone" />
+            <LogoFull className="h-40 w-auto text-bone" />
             <p className="mt-6 max-w-[28ch] text-sm leading-relaxed text-bone/55">
               {t.footer.blurb}
             </p>

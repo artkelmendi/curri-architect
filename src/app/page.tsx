@@ -9,11 +9,11 @@ import MarqueeBand from "@/components/MarqueeBand";
 import ProjectCard from "@/components/ProjectCard";
 import Logo3D from "@/components/Logo3D";
 import ProcessSticky from "@/components/ProcessSticky";
+import ArchitectPortrait from "@/components/ArchitectPortrait";
 
 export default function Home() {
   const { t } = useLang();
   const featured = projects.slice(0, 4);
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   return (
     <>
@@ -155,13 +155,7 @@ export default function Home() {
             </div>
           </div>
           <Reveal delay={0.15} className="relative">
-            <ParallaxImage
-              src={`${basePath}/images/curri-pic.png`}
-              alt={t.about.portraitAlt}
-              className="h-[60vh] w-full lg:h-full lg:min-h-[640px]"
-              sizes="(min-width: 1024px) 50vw, 100vw"
-            />
-            <div className="absolute -bottom-5 -left-5 hidden h-28 w-28 border-2 border-accent md:block" aria-hidden="true" />
+            <ArchitectPortrait alt={t.about.portraitAlt} />
           </Reveal>
         </div>
       </section>

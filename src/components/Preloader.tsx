@@ -81,7 +81,7 @@ export default function Preloader() {
             <motion.path
               d={LOGO_PIECE_TOP}
               stroke="#ff6600"
-              strokeWidth={2.5}
+              strokeWidth={14}
               fill="#ff6600"
               initial={{ pathLength: 0, fillOpacity: 0, opacity: 0, x: -28, y: -28 }}
               animate={{ pathLength: 1, fillOpacity: 1, opacity: 1, x: 0, y: 0 }}
@@ -96,7 +96,7 @@ export default function Preloader() {
             <motion.path
               d={LOGO_PIECE_BOTTOM}
               stroke="#ff6600"
-              strokeWidth={2.5}
+              strokeWidth={14}
               fill="#ff6600"
               initial={{ pathLength: 0, fillOpacity: 0, opacity: 0, x: 28, y: 28 }}
               animate={{ pathLength: 1, fillOpacity: 1, opacity: 1, x: 0, y: 0 }}
@@ -113,6 +113,7 @@ export default function Preloader() {
           {/* Wordmark — his original letterforms, rising letter by letter */}
           <svg
             viewBox={WORDMARK_VIEWBOX}
+            fillRule="evenodd"
             className="relative mt-10 h-14 w-auto md:h-[4.5rem]"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
