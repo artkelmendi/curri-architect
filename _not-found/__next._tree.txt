@@ -1,2 +1,2 @@
-:HL["/curri-architect/_next/static/chunks/1vkmp_a5j6zkj.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"HRY01VX-XF2yt9k_3FRqb"}
+:HL["/curri-architect/_next/static/chunks/0fip37eqwebuk.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"QxYto8cx4Ll_fxed1NV3F"}
