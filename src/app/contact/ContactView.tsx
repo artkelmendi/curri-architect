@@ -4,6 +4,8 @@ import { useLang } from "@/lib/i18n";
 import { LineReveal, Reveal } from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import AnimatedLogoMark from "@/components/AnimatedLogoMark";
+import StudioMap from "@/components/StudioMap";
+import { studio } from "@/data/studio";
 
 export default function ContactView() {
   const { t } = useLang();
@@ -11,12 +13,18 @@ export default function ContactView() {
   const details = [
     {
       label: t.contactPage.email,
-      value: "hello@curriarchitect.com",
-      href: "mailto:hello@curriarchitect.com",
+      value: studio.email,
+      href: `mailto:${studio.email}`,
+    },
+    {
+      label: t.contactPage.phone,
+      value: studio.phone,
+      href: studio.phoneHref,
     },
     {
       label: t.contactPage.studio,
       value: t.contactPage.city,
+      href: studio.mapsUrl,
     },
   ];
 
@@ -66,7 +74,7 @@ export default function ContactView() {
                   {d.href ? (
                     <a
                       href={d.href}
-                      className="mt-2 inline-block font-display text-xl font-bold text-bone transition-colors duration-200 hover:text-accent md:text-2xl"
+                      className="mt-2 inline-block max-w-full break-words font-display text-xl font-bold text-bone transition-colors duration-200 hover:text-accent md:text-2xl"
                     >
                       {d.value}
                     </a>
@@ -91,6 +99,7 @@ export default function ContactView() {
             <ContactForm />
           </Reveal>
         </div>
+        <StudioMap />
       </div>
     </section>
   );

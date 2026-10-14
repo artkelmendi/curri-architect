@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { dictionaries, useLang } from "@/lib/i18n";
+import { studio } from "@/data/studio";
 
 const FIELD =
   "w-full border-b border-line bg-transparent py-4 text-base text-bone placeholder:text-bone/30 transition-colors duration-300 focus:border-accent focus:outline-none";
@@ -33,7 +34,7 @@ export default function ContactForm() {
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\nProject type: ${type}\n\n${message}`
     );
-    window.location.href = `mailto:hello@curriarchitect.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${studio.email}?subject=${subject}&body=${body}`;
     setSent(true);
   };
 

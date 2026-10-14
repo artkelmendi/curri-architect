@@ -29,7 +29,7 @@ const en = {
     l2: "Light",
     l3: "Form.",
     intro:
-      "Curri is the fresh new studio of one architect — designing residential, commercial and cultural spaces with honesty, proportion and light. Based in Prishtina, building anywhere.",
+      "Curri is the fresh new studio of one architect — designing residential, commercial and cultural spaces with honesty, proportion and light. Based in Peja, building anywhere.",
     viewWork: "View the work",
     scroll: "Scroll ↓",
   },
@@ -108,9 +108,9 @@ const en = {
     menuTitle: "Menu",
     contactTitle: "Contact",
     followTitle: "Follow",
-    city: "Prishtina, Kosovo",
+    city: "Peja, Kosovo",
     rights: "© 2026 Curri Architects",
-    tagline: "Prishtina — Worldwide",
+    tagline: "Peja — Worldwide",
   },
   projectsPage: {
     eyebrow: "AS · Residential interior studies",
@@ -140,7 +140,7 @@ const en = {
     email: "Email",
     phone: "Phone",
     studio: "Studio",
-    city: "Prishtina, Kosovo",
+    city: "Peja, Kosovo",
     availability: "Currently taking projects for 2026 / 27",
   },
   form: {
@@ -175,7 +175,7 @@ const sq: typeof en = {
     l2: "Dritë",
     l3: "Formë.",
     intro:
-      "Curri është studioja e një arkitekti të vetëm — që projekton hapësira banimi, komerciale dhe kulturore me ndershmëri, proporcion dhe dritë. Me bazë në Prishtinë, ndërton kudo.",
+      "Curri është studioja e një arkitekti të vetëm — që projekton hapësira banimi, komerciale dhe kulturore me ndershmëri, proporcion dhe dritë. Me bazë në Pejë, ndërton kudo.",
     viewWork: "Shiko punët",
     scroll: "Shfleto ↓",
   },
@@ -254,9 +254,9 @@ const sq: typeof en = {
     menuTitle: "Menyja",
     contactTitle: "Kontakti",
     followTitle: "Na ndiqni",
-    city: "Prishtinë, Kosovë",
+    city: "Pejë, Kosovë",
     rights: "© 2026 Curri Architects",
-    tagline: "Prishtinë — Kudo në botë",
+    tagline: "Pejë — Kudo në botë",
   },
   projectsPage: {
     eyebrow: "AS · Studime të enterierit të banimit",
@@ -286,7 +286,7 @@ const sq: typeof en = {
     email: "Email",
     phone: "Telefoni",
     studio: "Studioja",
-    city: "Prishtinë, Kosovë",
+    city: "Pejë, Kosovë",
     availability: "Aktualisht pranoj projekte për 2026 / 27",
   },
   form: {

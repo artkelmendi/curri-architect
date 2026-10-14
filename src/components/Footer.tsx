@@ -5,6 +5,7 @@ import { LogoFull } from "./LogoMark";
 import Magnetic from "./Magnetic";
 import { LineReveal, Reveal } from "./Reveal";
 import { useLang } from "@/lib/i18n";
+import { studio } from "@/data/studio";
 
 const SOCIALS = [
   {
@@ -114,21 +115,21 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-bone/70">
               <li>
                 <a
-                  href="mailto:hello@curriarchitect.com"
+                  href={`mailto:${studio.email}`}
                   className="transition-colors duration-200 hover:text-accent"
                 >
-                  hello@curriarchitect.com
+                  {studio.email}
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+38344000000"
+                  href={studio.phoneHref}
                   className="transition-colors duration-200 hover:text-accent"
                 >
-                  +383 44 000 000
+                  {studio.phone}
                 </a>
               </li>
-              <li className="text-bone/45">{t.footer.city}</li>
+              <li><a href={studio.mapsUrl} target="_blank" rel="noopener noreferrer" className="text-bone/65 hover:text-accent">{t.footer.city} ↗</a></li>
             </ul>
           </div>
           <div>

@@ -8,6 +8,7 @@ import LogoMark, { LogoWordmark } from "./LogoMark";
 import LangSwitch from "./LangSwitch";
 import ThemeToggle from "./ThemeToggle";
 import { useLang } from "@/lib/i18n";
+import { studio } from "@/data/studio";
 
 const EASE = [0.76, 0, 0.24, 1] as const;
 
@@ -161,10 +162,10 @@ export default function Navbar() {
               transition={{ duration: 0.5, delay: 0.45 }}
             >
               <a
-                href="mailto:hello@curriarchitect.com"
+                href={`mailto:${studio.email}`}
                 className="text-sm text-bone/60 underline-offset-4 hover:text-accent hover:underline"
               >
-                hello@curriarchitect.com
+                {studio.email}
               </a>
               <LogoMark className="h-10 w-auto text-accent" aria-hidden="true" />
             </motion.div>

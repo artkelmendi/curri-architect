@@ -297,6 +297,34 @@ button:active { opacity: .8; }
 .architect-portrait__line--bottom { bottom: 12px; right: 12px; transform-origin: right; }
 .architect-portrait__line--left { top: 12px; left: 12px; transform-origin: top; }
 .architect-portrait__line--right { bottom: 12px; right: 12px; transform-origin: bottom; }
+.studio-map { display: grid; grid-template-columns: minmax(280px, .7fr) minmax(0, 1.3fr); margin-top: 112px; border: 1px solid var(--color-line); background: var(--color-raised); }
+.studio-map__info { padding: 40px; border-top: 3px solid #ff6600; }
+.studio-map__eyebrow { font-size: 10px; text-transform: uppercase; letter-spacing: .3em; color: var(--color-bone); opacity: .65; }
+.studio-map__mark { width: 36px; height: 42px; margin-top: 36px; color: #ff6600; }
+.studio-map__info h2 { margin-top: 20px; font-family: var(--font-display); font-size: clamp(48px, 5vw, 76px); font-weight: 800; letter-spacing: -.04em; line-height: 1; }
+.studio-map__info h2 span { color: #ff6600; }
+.studio-map__country { margin-top: 8px; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; }
+.studio-map__invitation { margin: 28px 0; max-width: 27ch; font-size: 15px; line-height: 1.7; color: var(--color-bone); opacity: .65; }
+.studio-map__directions { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; padding: 16px 20px; background: #ff6600; color: #0a0a0a; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; transition: transform 160ms ease; }
+.studio-map__directions svg { width: 18px; height: 18px; transition: transform 200ms ease; }
+.studio-map__directions:active { transform: scale(.97); }
+.studio-map__external { display: block; margin-top: 18px; font-size: 12px; text-decoration: underline; text-underline-offset: 5px; }
+.studio-map__coordinates { margin-top: 36px; font-family: var(--font-body); font-size: 10px; letter-spacing: .12em; line-height: 1.8; opacity: .45; }
+.studio-map__canvas { position: relative; min-height: 480px; background: #e8e7e3; }
+.studio-map__canvas iframe { width: 100%; height: 100%; position: absolute; inset: 0; border: 0; pointer-events: none; }
+.studio-map__canvas[data-interactive="true"] iframe { pointer-events: auto; }
+.studio-map__interact { position: absolute; top: 18px; right: 18px; display: flex; align-items: center; gap: 20px; padding: 13px 16px; background: #0a0a0a; border: 1px solid #ff6600; color: #f2efe9; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
+.studio-map__interact span { color: #ff6600; font-size: 18px; line-height: 1; }
+.studio-map a:focus-visible, .studio-map button:focus-visible { outline: 2px solid #ff6600; outline-offset: 5px; }
+@media (max-width: 767px) {
+  .studio-map { grid-template-columns: 1fr; margin-top: 72px; }
+  .studio-map__info { padding: 28px; }
+  .studio-map__mark { margin-top: 26px; }
+  .studio-map__canvas { min-height: 340px; }
+  .studio-map__coordinates { margin-top: 26px; }
+}
+@media (hover: hover) and (pointer: fine) { .studio-map__directions:hover svg { transform: translate(2px, -2px); } }
+@media (prefers-reduced-motion: reduce) { .studio-map { transform: none !important; } .studio-map__directions, .studio-map__directions svg { transition: none; } }
 @media (min-width: 1024px) { .architect-portrait { min-height: 640px; } }
 @media (max-width: 767px) {
   .architect-portrait { width: min(68vw, 240px); height: auto; margin-inline: auto; }

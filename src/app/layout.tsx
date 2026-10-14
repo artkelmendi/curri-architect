@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     template: "%s — Curri Architects",
   },
   description:
-    "Curri Architects is an independent architecture practice in Prishtina designing residential, commercial and cultural spaces with honesty, proportion and light.",
+    "Curri Architects is an independent architecture practice in Peja, Kosovo, designing residential, commercial and cultural spaces with honesty, proportion and light.",
   openGraph: {
     type: "website",
     siteName: "Curri Architects",
