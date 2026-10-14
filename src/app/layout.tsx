@@ -24,14 +24,30 @@ const grotesk = Space_Grotesk({
 });
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const siteUrl = "https://artkelmendi.github.io/curri-architect/";
+const shareImage = `${siteUrl}images/share-preview.jpg`;
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Curri Architect — Independent Architecture Practice",
     template: "%s — Curri Architect",
   },
   description:
     "Curri Architect is an independent architecture practice in Prishtina designing residential, commercial and cultural spaces with honesty, proportion and light.",
+  openGraph: {
+    type: "website",
+    siteName: "Curri Architect",
+    title: "Curri Architect — Space, Light & Form",
+    description: "Independent architecture. Considered spaces, material and light.",
+    images: [{ url: shareImage, width: 1200, height: 630, alt: "Curri Architect — original studio logo and AS residential interior" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Curri Architect — Space, Light & Form",
+    description: "Independent architecture. Considered spaces, material and light.",
+    images: [shareImage],
+  },
 };
 
 // Requested mobile zoom restriction; Safari can retain accessibility zoom.
