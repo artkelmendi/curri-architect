@@ -68,11 +68,11 @@ export default function Home() {
                 src={featured[0].hero}
                 alt={featured[0].title}
                 priority
-                className="h-[55vh] md:h-[78vh]"
+                className="original-hero-image h-[55vh] md:h-[78vh]"
               />
               <div className="mt-4 flex items-center justify-between text-xs uppercase tracking-[0.3em] text-bone/45">
                 <span className="transition-colors duration-300 group-hover:text-accent">
-                  {featured[0].title} — {featured[0].year}
+                  {featured[0].title} · AS
                 </span>
                 <span>{t.hero.scroll}</span>
               </div>
@@ -112,13 +112,13 @@ export default function Home() {
           </Reveal>
         </div>
 
-        <div className="grid gap-x-10 gap-y-20 md:grid-cols-2">
+        <div className="project-pair-grid grid grid-cols-2 gap-x-4 gap-y-10 md:gap-x-10 md:gap-y-20">
           <ProjectCard project={featured[0]} index={0} />
-          <div className="md:mt-32">
+          <div>
             <ProjectCard project={featured[1]} index={1} delay={0.1} />
           </div>
           <ProjectCard project={featured[2]} index={2} />
-          <div className="md:mt-32">
+          <div>
             <ProjectCard project={featured[3]} index={3} delay={0.1} />
           </div>
         </div>

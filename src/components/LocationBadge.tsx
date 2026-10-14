@@ -1,0 +1,13 @@
+export default function LocationBadge({ location }: { location: string }) {
+  return (
+    <span className="project-location">
+      {location === "Switzerland" && (
+        <svg className="swiss-flag" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#da291c" d="M0 0h24v24H0z" />
+          <path fill="#fff" d="M10 5h4v5h5v4h-5v5h-4v-5H5v-4h5z" />
+        </svg>
+      )}
+      <span>{location}</span>
+    </span>
+  );
+}

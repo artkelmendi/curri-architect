@@ -14,7 +14,7 @@ export default function ScrollFrame() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-y-0 left-5 right-5 z-0"
+      className="pointer-events-none fixed inset-y-0 left-1 right-1 z-0"
       aria-hidden="true"
     >
       {/* Left rail */}

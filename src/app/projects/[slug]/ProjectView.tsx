@@ -5,6 +5,7 @@ import type { Project } from "@/data/projects";
 import { useLang } from "@/lib/i18n";
 import { LineReveal, Reveal } from "@/components/Reveal";
 import ParallaxImage from "@/components/ParallaxImage";
+import LocationBadge from "@/components/LocationBadge";
 
 export default function ProjectView({
   project,
@@ -21,10 +22,10 @@ export default function ProjectView({
     { label: t.project.meta.category, value: project.category[lang] },
     { label: t.project.meta.area, value: project.area },
     { label: t.project.meta.scope, value: project.scope[lang] },
-  ];
+  ].filter(item => item.value);
 
   return (
-    <article className="pt-36 md:pt-44">
+    <article className="original-project pt-36 md:pt-44">
       <div className="mx-auto max-w-[1700px] px-6 md:px-12">
         {/* Back link */}
         <Reveal y={0} delay={0.05}>
@@ -44,7 +45,7 @@ export default function ProjectView({
           as="h1"
           delay={0.15}
           className="mt-10 font-display text-[clamp(3rem,9vw,9rem)] font-black uppercase leading-[0.9] tracking-[-0.03em]"
-          lines={project.title.split(" ").map((word, i) => (
+          lines={project.title.split(" — ").map((word, i) => (
             <span key={i} className={i === 1 ? "text-outline" : undefined}>
               {word}
             </span>
@@ -53,14 +54,14 @@ export default function ProjectView({
 
         {/* Meta */}
         <Reveal delay={0.35} className="mt-14">
-          <dl className="grid grid-cols-2 gap-px border border-line bg-line md:grid-cols-5">
+          <dl className="grid grid-cols-2 gap-px border border-line bg-line">
             {meta.map((m) => (
               <div key={m.label} className="bg-base p-5 md:p-6">
                 <dt className="text-[10px] uppercase tracking-[0.3em] text-bone/40">
                   {m.label}
                 </dt>
                 <dd className="mt-2 font-display text-base font-bold text-bone md:text-lg">
-                  {m.value}
+                  {m.label === t.project.meta.location ? <LocationBadge location={m.value} /> : m.value}
                 </dd>
               </div>
             ))}

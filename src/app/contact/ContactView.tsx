@@ -15,11 +15,6 @@ export default function ContactView() {
       href: "mailto:hello@curriarchitect.com",
     },
     {
-      label: t.contactPage.phone,
-      value: "+383 44 000 000",
-      href: "tel:+38344000000",
-    },
-    {
       label: t.contactPage.studio,
       value: t.contactPage.city,
     },

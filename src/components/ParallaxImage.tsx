@@ -35,8 +35,8 @@ export default function ParallaxImage({
   );
 
   return (
-    <div ref={ref} className={`relative overflow-hidden ${className ?? ""}`}>
-      <motion.div style={{ y }} className="absolute -inset-y-[12%] inset-x-0">
+    <div ref={ref} className={`parallax-frame relative overflow-hidden ${className ?? ""}`}>
+      <motion.div style={{ y }} className="parallax-media absolute -inset-y-[12%] inset-x-0">
         <Image
           src={src}
           alt={alt}

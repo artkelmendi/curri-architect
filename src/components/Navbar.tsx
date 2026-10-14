@@ -51,10 +51,10 @@ export default function Navbar() {
             : "border-b border-transparent bg-transparent"
         }`}
       >
-        <nav className="mx-auto flex h-20 max-w-[1700px] items-center justify-between px-6 md:px-12">
+        <nav className="original-navigation mx-auto flex h-20 max-w-[1700px] items-center justify-between px-6 md:px-12">
           <Link
             href="/"
-            className="group flex items-center gap-3"
+            className="original-nav-brand group flex items-center gap-3"
             aria-label="Curri Architect — home"
           >
             <LogoMark className="h-9 w-auto text-accent transition-transform duration-300 group-hover:scale-110" />
@@ -62,7 +62,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden items-center gap-10 md:flex">
+          <div className="hidden items-center gap-10 lg:flex">
             {LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -93,7 +93,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile right cluster */}
-          <div className="flex items-center gap-3 md:hidden">
+          <div className="original-mobile-tools flex items-center gap-3 lg:hidden">
             <LangSwitch />
             <ThemeToggle />
             <button
@@ -122,7 +122,10 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-40 flex flex-col justify-between bg-base px-6 pb-10 pt-32 md:hidden"
+            className="original-mobile-menu fixed inset-0 z-40 flex flex-col justify-between bg-base px-6 pb-10 pt-32 lg:hidden"
+            role="dialog"
+            aria-label="Navigation"
+            aria-modal="true"
             initial={{ clipPath: "inset(0 0 100% 0)" }}
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}

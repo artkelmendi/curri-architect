@@ -5,12 +5,13 @@ import Link from "next/link";
 import type { Project } from "@/data/projects";
 import { useLang } from "@/lib/i18n";
 import { Reveal } from "./Reveal";
+import LocationBadge from "./LocationBadge";
 
 export default function ProjectCard({
   project,
   index,
   delay = 0,
-  sizes = "(min-width: 768px) 50vw, 100vw",
+  sizes = "50vw",
 }: {
   project: Project;
   index: number;
@@ -20,7 +21,7 @@ export default function ProjectCard({
   const { lang } = useLang();
   return (
     <Reveal delay={delay}>
-      <Link href={`/projects/${project.slug}`} className="group block">
+      <Link href={`/projects/${project.slug}`} className="project-card group block">
         <div className="relative aspect-[4/3] overflow-hidden bg-raised">
           <Image
             src={project.hero}
@@ -37,14 +38,15 @@ export default function ProjectCard({
             </svg>
           </div>
         </div>
-        <div className="mt-5 flex items-start justify-between gap-6">
-          <div>
+        <div className="project-card-copy mt-5 flex items-start justify-between gap-6">
+          <div className="min-w-0">
             <h3 className="font-display text-2xl font-bold uppercase tracking-tight text-bone transition-colors duration-300 group-hover:text-accent md:text-3xl">
               {project.title}
             </h3>
             <p className="mt-2 text-xs uppercase tracking-[0.3em] text-bone/45">
-              {project.category[lang]} — {project.location}, {project.year}
+              {project.category[lang]} · AS
             </p>
+            <LocationBadge location={project.location} />
           </div>
           <span className="font-display text-sm font-bold text-accent/80">
             {String(index + 1).padStart(2, "0")}

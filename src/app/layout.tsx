@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Archivo, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Preloader from "@/components/Preloader";
@@ -32,6 +32,13 @@ export const metadata: Metadata = {
   },
   description:
     "Curri Architect is an independent architecture practice in Prishtina designing residential, commercial and cultural spaces with honesty, proportion and light.",
+};
+
+// Requested mobile zoom restriction; Safari can retain accessibility zoom.
+export const viewport: Viewport = {
+  width: "device-width", initialScale: 1, maximumScale: 1, userScalable: false,
+  viewportFit: "cover", interactiveWidget: "resizes-content",
+  themeColor: [{media:"(prefers-color-scheme: dark)",color:"#0a0a0a"},{media:"(prefers-color-scheme: light)",color:"#f4f1ea"}],
 };
 
 export default function RootLayout({

@@ -51,10 +51,10 @@ const en = {
     p1: "I’m Curri — a fresh new architect with a deliberately small studio. One architect, a handful of projects a year, and full attention on each of them, from the first sketch to the last site visit.",
     p2: "I believe every site has one honest answer. My work is the process of finding it: stripping away what isn’t needed until space, light and structure say everything on their own.",
     stats: [
-      { value: "12+", label: "Years of practice" },
-      { value: "48", label: "Projects delivered" },
-      { value: "09", label: "Design awards" },
-      { value: "01", label: "Architect. No noise." },
+      { value: "05", label: "AS level studies" },
+      { value: "114", label: "Project renders" },
+      { value: "44", label: "Selected views" },
+      { value: "01", label: "Residential scheme" },
     ],
     portraitAlt: "Portrait of the architect",
   },
@@ -113,10 +113,10 @@ const en = {
     tagline: "Prishtina — Worldwide",
   },
   projectsPage: {
-    eyebrow: "Selected work, 2022 — 2026",
+    eyebrow: "AS · Residential interior studies",
     title: "Projects",
     blurb:
-      "A deliberately short list. Each project here was designed, documented and supervised by one architect — no handovers, no dilution between the first sketch and the finished building.",
+      "Five related level studies from the AS residential scheme. Original architectural visualizations by Curri Architect, from shared living spaces to bedrooms, terraces and the utility level.",
   },
   project: {
     back: "All projects",
@@ -197,10 +197,10 @@ const sq: typeof en = {
     p1: "Unë jam Curri — dhe kjo studio është qëllimisht e vogël. Një arkitekt, disa projekte në vit, dhe vëmendje e plotë për secilin prej tyre — nga skica e parë deri te vizita e fundit në kantier.",
     p2: "Besoj se çdo parcelë ka një përgjigje të vetme të ndershme. Puna ime është procesi i gjetjes së saj: heqja e gjithçkaje të panevojshme derisa hapësira, drita dhe struktura të thonë gjithçka vetë.",
     stats: [
-      { value: "12+", label: "Vite përvojë" },
-      { value: "48", label: "Projekte të realizuara" },
-      { value: "09", label: "Çmime dizajni" },
-      { value: "01", label: "Arkitekt. Pa zhurmë." },
+      { value: "05", label: "Studime të niveleve AS" },
+      { value: "114", label: "Rendera të projektit" },
+      { value: "44", label: "Pamje të zgjedhura" },
+      { value: "01", label: "Skemë banimi" },
     ],
     portraitAlt: "Portreti i arkitektit",
   },
@@ -259,10 +259,10 @@ const sq: typeof en = {
     tagline: "Prishtinë — Kudo në botë",
   },
   projectsPage: {
-    eyebrow: "Punë të zgjedhura, 2022 — 2026",
+    eyebrow: "AS · Studime të enterierit të banimit",
     title: "Projektet",
     blurb:
-      "Një listë qëllimisht e shkurtër. Secili projekt këtu është projektuar, dokumentuar dhe mbikëqyrur nga një arkitekt i vetëm — pa dorëzime, pa hollim mes skicës së parë dhe objektit të përfunduar.",
+      "Pesë studime të lidhura të niveleve të skemës së banimit AS. Vizualizime origjinale arkitektonike nga Curri Architect, nga hapësirat e përbashkëta te dhomat e gjumit, tarracat dhe niveli funksional.",
   },
   project: {
     back: "Të gjitha projektet",

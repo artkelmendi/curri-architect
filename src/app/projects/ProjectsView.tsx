@@ -9,7 +9,7 @@ export default function ProjectsView() {
   const { t } = useLang();
 
   return (
-    <section className="mx-auto max-w-[1700px] px-6 pb-32 pt-36 md:px-12 md:pt-44">
+    <section className="original-archive mx-auto max-w-[1700px] px-6 pb-32 pt-36 md:px-12 md:pt-44">
       {/* Header */}
       <div className="mb-20 md:mb-28">
         <Reveal y={0} delay={0.1}>
@@ -39,9 +39,9 @@ export default function ProjectsView() {
       </div>
 
       {/* Grid */}
-      <div className="grid gap-x-10 gap-y-20 md:grid-cols-2">
+      <div className="project-pair-grid grid grid-cols-2 gap-x-4 gap-y-10 md:gap-x-10 md:gap-y-20">
         {projects.map((project, i) => (
-          <div key={project.slug} className={i % 2 === 1 ? "md:mt-32" : ""}>
+          <div key={project.slug}>
             <ProjectCard project={project} index={i} delay={(i % 2) * 0.1} />
           </div>
         ))}
