@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
 import { LOGO_PIECE_TOP, LOGO_PIECE_BOTTOM, LOGO_VIEWBOX } from "./LogoMark";
+import useLogoWobble from "./useLogoWobble";
 
 /**
  * 3D assembly of the mark: the two pieces fly in from opposite sides with
@@ -69,12 +70,14 @@ const ring: Variants = {
 export default function Logo3D({ className }: { className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.35 });
+  const wobble = useLogoWobble();
 
   return (
-    <div
+    <motion.div
+      {...wobble}
       ref={ref}
       className={`relative aspect-[134/153] ${className ?? ""}`}
-      style={{ perspective: 1100 }}
+      style={{ ...wobble.style, perspective: 1100 }}
       aria-hidden="true"
     >
       {/* Idle 3D float once assembled */}
@@ -140,6 +143,6 @@ export default function Logo3D({ className }: { className?: string }) {
           </motion.div>
         </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }

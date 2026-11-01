@@ -6,6 +6,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import InstagramSection from "@/components/InstagramSection";
 import ScrollFrame from "@/components/ScrollFrame";
 import LogoGrid from "@/components/LogoGrid";
 import { LanguageProvider } from "@/lib/i18n";
@@ -82,6 +83,7 @@ export default function RootLayout({
           <CustomCursor />
           <Navbar />
           <main className="relative z-10 flex-1">{children}</main>
+          <InstagramSection />
           <Footer />
         </LanguageProvider>
         </ThemeProvider>

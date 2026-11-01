@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -16,16 +16,18 @@ export function Reveal({
   y?: number;
   className?: string;
 }) {
+  const reduced = useReducedMotion();
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
+      data-scroll-reveal="true"
+      initial={{ opacity: 0, transform: reduced ? "none" : `translate3d(0, ${y}px, 0)` }}
+      whileInView={{ opacity: 1, transform: reduced ? "none" : "translate3d(0, 0px, 0)" }}
       // `amount` instead of a negative margin: rootMargin-based triggers are
       // unreliable on some mobile browsers / in-app webviews and can leave
       // content permanently hidden.
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.9, delay, ease: EASE }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: reduced ? .25 : .8, delay: reduced ? 0 : delay, ease: EASE }}
     >
       {children}
     </motion.div>
@@ -33,9 +35,9 @@ export function Reveal({
 }
 
 const lineVariants: Variants = {
-  hidden: { y: "112%" },
+  hidden: { transform: "translate3d(0, 112%, 0)" },
   visible: {
-    y: 0,
+    transform: "translate3d(0, 0%, 0)",
     transition: { duration: 0.95, ease: EASE },
   },
 };
@@ -62,6 +64,7 @@ export function LineReveal({
   lineClassName?: string;
   as?: "h1" | "h2" | "h3" | "p" | "div";
 }) {
+  const reduced = useReducedMotion();
   const MotionTag = motion[Tag];
   return (
     <MotionTag
@@ -77,7 +80,7 @@ export function LineReveal({
         <span key={i} className="block overflow-hidden py-[0.14em] -my-[0.14em]">
           <motion.span
             className={`block ${lineClassName ?? ""}`}
-            variants={lineVariants}
+            variants={reduced ? { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: .25 } } } : lineVariants}
           >
             {line}
           </motion.span>

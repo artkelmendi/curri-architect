@@ -95,12 +95,11 @@ const en = {
     ],
     cta: "Discuss your project",
   },
-  footerCta: {
-    available: "Available for new projects",
-    l1: "Have a project",
-    l2: "in mind?",
-    accent: "Let’s talk.",
-    button: "Start a conversation",
+  instagram: {
+    l1: "Follow the",
+    l2: "process.",
+    description: "Architecture, interiors and the details in between.",
+    follow: "Follow @curriarch",
   },
   footer: {
     blurb:
@@ -241,12 +240,11 @@ const sq: typeof en = {
     ],
     cta: "Diskuto projektin tënd",
   },
-  footerCta: {
-    available: "I lirë për projekte të reja",
-    l1: "Keni një projekt",
-    l2: "në mendje?",
-    accent: "Të flasim.",
-    button: "Nis bisedën",
+  instagram: {
+    l1: "Ndiqni",
+    l2: "procesin.",
+    description: "Arkitekturë, enterier dhe detajet që i lidhin.",
+    follow: "Ndiqni @curriarch",
   },
   footer: {
     blurb:

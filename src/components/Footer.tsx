@@ -2,15 +2,13 @@
 
 import Link from "next/link";
 import { LogoFull } from "./LogoMark";
-import Magnetic from "./Magnetic";
-import { LineReveal, Reveal } from "./Reveal";
 import { useLang } from "@/lib/i18n";
 import { studio } from "@/data/studio";
 
 const SOCIALS = [
   {
     label: "Instagram",
-    href: "https://instagram.com",
+    href: studio.instagramUrl,
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="h-5 w-5" aria-hidden="true">
         <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -42,52 +40,17 @@ const SOCIALS = [
 export default function Footer() {
   const { t } = useLang();
   return (
-    <footer className="studio-footer relative z-10 border-t border-line">
-      {/* Big CTA */}
-      <div className="relative overflow-hidden">
-        <div className="relative mx-auto max-w-[1700px] px-6 py-28 md:px-12 md:py-40">
-        <Reveal>
-          <p className="mb-8 flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-bone/50">
-            <span className="h-2 w-2 rounded-full bg-accent animate-pulse-dot" />
-            {t.footerCta.available}
-          </p>
-        </Reveal>
-        <LineReveal
-          as="h2"
-          className="font-display text-[clamp(2.8rem,8vw,8rem)] font-black uppercase leading-[0.95] tracking-[-0.02em]"
-          lines={[
-            <span key="0">{t.footerCta.l1}</span>,
-            <span key="1">
-              {t.footerCta.l2} <span className="text-accent">{t.footerCta.accent}</span>
-            </span>,
-          ]}
-        />
-        <Reveal delay={0.25} className="mt-14">
-          <Magnetic>
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-4 rounded-full bg-accent px-10 py-5 text-sm font-semibold uppercase tracking-[0.25em] text-base transition-colors duration-300 hover:bg-bone"
-            >
-              {t.footerCta.button}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-            </Link>
-          </Magnetic>
-        </Reveal>
-        </div>
-      </div>
-
+    <footer id="studio-footer" className="studio-footer relative z-10 border-t border-line">
       {/* Info grid */}
-      <div className="border-t border-line">
-        <div className="mx-auto grid max-w-[1700px] gap-12 px-6 py-16 md:grid-cols-4 md:px-12">
-          <div>
+      <div>
+        <div className="footer-info mx-auto grid max-w-[1700px] gap-12 px-6 py-16 md:grid-cols-4 md:px-12">
+          <div className="footer-brand">
             <LogoFull className="h-40 w-auto text-bone" />
             <p className="mt-6 max-w-[28ch] text-sm leading-relaxed text-bone/55">
               {t.footer.blurb}
             </p>
           </div>
-          <div>
+          <div className="footer-menu">
             <h3 className="mb-5 text-[11px] uppercase tracking-[0.35em] text-bone/40">
               {t.footer.menuTitle}
             </h3>
@@ -108,7 +71,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="footer-contact">
             <h3 className="mb-5 text-[11px] uppercase tracking-[0.35em] text-bone/40">
               {t.footer.contactTitle}
             </h3>
@@ -132,7 +95,7 @@ export default function Footer() {
               <li><a href={studio.mapsUrl} target="_blank" rel="noopener noreferrer" className="text-bone/65 hover:text-accent">{t.footer.city} ↗</a></li>
             </ul>
           </div>
-          <div>
+          <div className="footer-follow">
             <h3 className="mb-5 text-[11px] uppercase tracking-[0.35em] text-bone/40">
               {t.footer.followTitle}
             </h3>
@@ -156,7 +119,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-line">
-        <div className="mx-auto flex max-w-[1700px] flex-col items-center justify-between gap-2 px-6 py-6 text-[11px] uppercase tracking-[0.3em] text-bone/35 md:flex-row md:px-12">
+        <div className="footer-bottom mx-auto flex max-w-[1700px] flex-col items-center justify-between gap-2 px-6 py-6 text-[11px] uppercase tracking-[0.3em] text-bone/35 md:flex-row md:px-12">
           <span>{t.footer.rights}</span>
           <span>{t.footer.tagline}</span>
         </div>

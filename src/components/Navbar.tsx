@@ -58,7 +58,7 @@ export default function Navbar() {
             className="original-nav-brand group flex items-center gap-3"
             aria-label="Curri Architects — home"
           >
-            <LogoMark className="h-9 w-auto text-accent transition-transform duration-300 group-hover:scale-110" />
+            <LogoMark className="h-9 w-auto text-accent" />
             <LogoWordmark className="h-8 w-auto text-bone" />
           </Link>
 

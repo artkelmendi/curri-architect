@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
+import useLogoWobble from "./useLogoWobble";
 import {
   LOGO_PIECE_TOP,
   LOGO_PIECE_BOTTOM,
@@ -13,6 +14,7 @@ const EASE = [0.76, 0, 0.24, 1] as const;
  *  mark draw themselves as strokes, slide together, then fill with orange. */
 export default function AnimatedLogoMark({ className }: { className?: string }) {
   const reduced = useReducedMotion();
+  const wobble = useLogoWobble();
 
   const piece = (dx: number, dy: number, delay: number): Variants => ({
     hidden: reduced
@@ -36,6 +38,7 @@ export default function AnimatedLogoMark({ className }: { className?: string }) 
 
   return (
     <motion.svg
+      {...wobble}
       viewBox={LOGO_VIEWBOX}
       className={className}
       fill="none"

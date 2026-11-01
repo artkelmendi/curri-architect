@@ -7,13 +7,9 @@ import { LineReveal, Reveal } from "./Reveal";
 import Magnetic from "./Magnetic";
 
 /**
- * Long sticky-scroll process section, pinning on every device:
- *  - Desktop: the left column pins for the full height of the tall step
- *    panels, with an index that highlights the active step.
- *  - Mobile: a compact progress bar pins at the top (active step + a filling
- *    line) while the panels scroll beneath it.
- * Stable viewport units prevent browser-chrome resizing from moving the panels.
- * One passive, frame-throttled scroll sample selects the active panel in order.
+ * Desktop retains the sticky service index. Mobile is deliberately normal flow:
+ * no secondary pinned layer for Safari to re-composite while
+ * its address bar changes size. Scroll-driven React updates are desktop-only.
  */
 export default function ProcessSticky() {
   const { t } = useLang();
@@ -23,10 +19,12 @@ export default function ProcessSticky() {
   const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    const desktopLayout = window.matchMedia("(min-width: 1024px)");
     let frame = 0;
     let current = -1;
     const sample = () => {
       frame = 0;
+      if (!desktopLayout.matches) return;
       const panels = panelRefs.current.filter((panel) => panel !== null);
       if (!panels.length) return;
       const first = panels[0].getBoundingClientRect();
@@ -38,7 +36,7 @@ export default function ProcessSticky() {
       const next = found < 0 ? panels.length - 1 : found;
       if (next !== current) { current = next; setActive(next); }
     };
-    const schedule = () => { if (!frame) frame = requestAnimationFrame(sample); };
+    const schedule = () => { if (desktopLayout.matches && !frame) frame = requestAnimationFrame(sample); };
     schedule();
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
@@ -57,49 +55,23 @@ export default function ProcessSticky() {
   );
 
   return (
-    <section className="services-section border-t border-line">
+    <section id="services" className="services-section border-t border-line">
       <div className="mx-auto max-w-[1700px] px-6 md:px-12">
         {/* Mobile heading (scrolls away) */}
-        <div className="pt-24 md:pt-32 lg:hidden">
-          <LineReveal
-            as="h2"
-            className="font-display text-[clamp(2.6rem,11vw,4rem)] font-black uppercase leading-[0.95] tracking-[-0.02em]"
-            lines={[<span key="0">{heading}</span>]}
-          />
-          <Reveal delay={0.15}>
+        <div className="services-mobile-intro pt-24 md:pt-32 lg:hidden">
+          <Reveal y={24}>
+          <h2 className="font-display text-[clamp(2.6rem,11vw,4rem)] font-black uppercase leading-[0.95] tracking-[-0.02em]">{heading}</h2>
             <p className="mt-5 max-w-[42ch] text-sm leading-relaxed text-bone/55">
               {t.services.intro}
             </p>
           </Reveal>
         </div>
 
-        {/* Sticky context: bar pins here, unpins when the steps end */}
+        {/* Desktop-only sticky context; phone content stays in normal flow. */}
         <div className="relative">
-          {/* Mobile sticky progress bar */}
-          <div className="services-progress sticky top-20 z-20 -mx-6 mt-8 border-y border-line bg-base px-6 py-3 md:-mx-12 md:px-12 lg:hidden" data-active-step={active}>
-            <div className="flex items-center justify-between gap-4">
-              <span className="font-display text-xs font-bold uppercase tracking-[0.2em]">
-                {heading}
-              </span>
-              <span className="font-display text-xs font-bold text-accent">
-                {String(active + 1).padStart(2, "0")} /{" "}
-                {String(total).padStart(2, "0")}
-              </span>
-            </div>
-            <div className="mt-1.5 truncate text-[11px] uppercase tracking-[0.18em] text-bone/55">
-              {items[active].name}
-            </div>
-            <div className="mt-2.5 h-0.5 w-full bg-line" role="progressbar" aria-label={t.services.headingPre + t.services.headingAccent} aria-valuemin={1} aria-valuemax={total} aria-valuenow={active + 1}>
-              <div
-                className="services-progress-fill h-full w-full origin-left bg-accent"
-                style={{ transform: `scaleX(${(active + 1) / total})` }}
-              />
-            </div>
-          </div>
-
           <div className="lg:grid lg:grid-cols-12 lg:gap-16">
             {/* Desktop sticky left */}
-            <div className="hidden lg:col-span-5 lg:block">
+            <div className="services-desktop-index hidden lg:col-span-5 lg:block" data-active-step={active}>
               <div className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-center">
                 <LineReveal
                   as="h2"
