@@ -12,8 +12,8 @@ import Magnetic from "./Magnetic";
  *    panels, with an index that highlights the active step.
  *  - Mobile: a compact progress bar pins at the top (active step + a filling
  *    line) while the panels scroll beneath it.
- * Both use plain CSS `position: sticky` + one cheap IntersectionObserver, so
- * there are no scroll listeners to jank on a phone.
+ * Stable viewport units prevent browser-chrome resizing from moving the panels.
+ * One passive, frame-throttled scroll sample selects the active panel in order.
  */
 export default function ProcessSticky() {
   const { t } = useLang();
@@ -23,19 +23,30 @@ export default function ProcessSticky() {
   const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActive(Number((entry.target as HTMLElement).dataset.index ?? 0));
-          }
-        }
-      },
-      // A thin band across the middle of the viewport marks the "current" step.
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
-    );
-    panelRefs.current.forEach((el) => el && observer.observe(el));
-    return () => observer.disconnect();
+    let frame = 0;
+    let current = -1;
+    const sample = () => {
+      frame = 0;
+      const panels = panelRefs.current.filter((panel) => panel !== null);
+      if (!panels.length) return;
+      const first = panels[0].getBoundingClientRect();
+      const last = panels[panels.length - 1].getBoundingClientRect();
+      if (first.top > window.innerHeight || last.bottom < 80) return;
+      const activationLine = Math.max(180, window.innerHeight * .5);
+      // Always calculate from document order, not observer callback order.
+      const found = panels.findIndex((panel) => panel.getBoundingClientRect().bottom > activationLine);
+      const next = found < 0 ? panels.length - 1 : found;
+      if (next !== current) { current = next; setActive(next); }
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(sample); };
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      cancelAnimationFrame(frame);
+    };
   }, [total]);
 
   const heading = (
@@ -46,7 +57,7 @@ export default function ProcessSticky() {
   );
 
   return (
-    <section className="border-t border-line">
+    <section className="services-section border-t border-line">
       <div className="mx-auto max-w-[1700px] px-6 md:px-12">
         {/* Mobile heading (scrolls away) */}
         <div className="pt-24 md:pt-32 lg:hidden">
@@ -65,7 +76,7 @@ export default function ProcessSticky() {
         {/* Sticky context: bar pins here, unpins when the steps end */}
         <div className="relative">
           {/* Mobile sticky progress bar */}
-          <div className="sticky top-20 z-20 -mx-6 mt-8 border-y border-line bg-base px-6 py-3 md:-mx-12 md:px-12 lg:hidden">
+          <div className="services-progress sticky top-20 z-20 -mx-6 mt-8 border-y border-line bg-base px-6 py-3 md:-mx-12 md:px-12 lg:hidden" data-active-step={active}>
             <div className="flex items-center justify-between gap-4">
               <span className="font-display text-xs font-bold uppercase tracking-[0.2em]">
                 {heading}
@@ -78,10 +89,10 @@ export default function ProcessSticky() {
             <div className="mt-1.5 truncate text-[11px] uppercase tracking-[0.18em] text-bone/55">
               {items[active].name}
             </div>
-            <div className="mt-2.5 h-0.5 w-full bg-line">
+            <div className="mt-2.5 h-0.5 w-full bg-line" role="progressbar" aria-label={t.services.headingPre + t.services.headingAccent} aria-valuemin={1} aria-valuemax={total} aria-valuenow={active + 1}>
               <div
-                className="h-full bg-accent transition-[width] duration-500 ease-out"
-                style={{ width: `${((active + 1) / total) * 100}%` }}
+                className="services-progress-fill h-full w-full origin-left bg-accent"
+                style={{ transform: `scaleX(${(active + 1) / total})` }}
               />
             </div>
           </div>
@@ -107,7 +118,7 @@ export default function ProcessSticky() {
                         type="button"
                         onClick={() =>
                           panelRefs.current[i]?.scrollIntoView({
-                            behavior: "smooth",
+                            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
                             block: "center",
                           })
                         }
@@ -146,13 +157,13 @@ export default function ProcessSticky() {
                     panelRefs.current[i] = el;
                   }}
                   data-index={i}
-                  className="flex min-h-[58vh] flex-col justify-center border-t border-line py-14 first:border-t-0 lg:min-h-[85vh] lg:border-t-0"
+                  className="services-panel flex min-h-[58svh] flex-col justify-center border-t border-line py-14 first:border-t-0 lg:min-h-[85svh] lg:border-t-0"
                 >
                   <Reveal>
                     <span className="font-display text-6xl font-black leading-none text-accent/25 md:text-8xl">
                       {s.n}
                     </span>
-                    <h3 className="mt-5 font-display text-4xl font-bold uppercase leading-[0.95] tracking-tight text-bone md:text-6xl">
+                    <h3 className="mt-5 font-display text-[clamp(1.5rem,6.5vw,2.25rem)] font-bold uppercase leading-[1.05] tracking-tight text-bone md:text-6xl">
                       {s.name}
                     </h3>
                     <p className="mt-6 max-w-[44ch] text-lg leading-relaxed text-bone/60 md:text-xl">

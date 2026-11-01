@@ -42,7 +42,7 @@ const SOCIALS = [
 export default function Footer() {
   const { t } = useLang();
   return (
-    <footer className="relative z-10 border-t border-line">
+    <footer className="studio-footer relative z-10 border-t border-line">
       {/* Big CTA */}
       <div className="relative overflow-hidden">
         <div className="relative mx-auto max-w-[1700px] px-6 py-28 md:px-12 md:py-40">
